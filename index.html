@@ -17,6 +17,7 @@ p.increase {line-height: 1cm}
             blipClient
                 .withAppKey('cHJpb3JpemFkb3JkZWNoYW1hZG9zMTpjMjQyYzRjMS1iYTc3LTQ2YzYtYjc3Zi1mYTZiYzE1YjA1NDU=')
                 .withButton({"color":"#092350","icon":""})
+                .withTarget('chat')
                 .withEventHandler(BlipChat.LOAD_EVENT, function () {
             blipClient.sendMessage({
                   "type": "text/plain",
@@ -26,7 +27,6 @@ p.increase {line-height: 1cm}
                    }
                   });
             })
-            .withTarget('chat')
             .build();
         }
     })();

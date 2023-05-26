@@ -6,32 +6,24 @@ p.increase {line-height: 1cm}
 </style>
 
 </head>
-
 <body>
+  
+    <div class="full-height" id="blip"></div>
     
- <script src="https://unpkg.com/blip-chat-widget@1.6.*" type="text/javascript"></script>
-<script>
-(function () {
-        window.onload = function () {
-            var blipClient = new BlipChat();
-            blipClient
-                .withAppKey('cHJpb3JpemFkb3JkZWNoYW1hZG9zMTpjMjQyYzRjMS1iYTc3LTQ2YzYtYjc3Zi1mYTZiYzE1YjA1NDU=')
-                .withButton({"color":"#092350","icon":""})
-                .withTarget('bot')
-                .withEventHandler(BlipChat.LOAD_EVENT, function () {
-            blipClient.sendMessage({
-                  "type": "text/plain",
-                  "content": "Start",
-                  "metadata":{
-                    "#blip.hiddenMessage": true
-                   }
-                  });
-            })
-            .build();
-        }
-    })();
-</script>
-            
-
+    <script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+    <script>
+        (function () {
+            window.onload = function () {
+                var blipClient = new BlipChat()
+                    .withAppKey('cHJpb3JpemFkb3JkZWNoYW1hZG9zMTpjMjQyYzRjMS1iYTc3LTQ2YzYtYjc3Zi1mYTZiYzE1YjA1NDU=')
+                    .withButton({ "color":"#092350" })
+                    .withTarget("blip")
+                    .withEventHandler(BlipChat.CREATE_ACCOUNT_EVENT,
+                        function () { blipClient.sendMessage({ "type": "application/vnd.lime.chatstate+json", "content": { "state": "starting" } }); });
+                blipClient.build();
+            }
+        })();
+    </script>
+    
 </body>
 </html>

@@ -8,30 +8,23 @@ p.increase {line-height: 1cm}
 </head>
 
 <body>
-<script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+
+<script src="https://unpkg.com/blip-chat-widget@1.6.*" type="text/javascript"></script>
 <script>
-    (function () {
+(function () {
         window.onload = function () {
-            new BlipChat()
-                .withAppKey('cHJpb3JpemFkb3JkZWNoYW1hZG9zMTpjMjQyYzRjMS1iYTc3LTQ2YzYtYjc3Zi1mYTZiYzE1YjA1NDU=')
-                .withButton({"color":"#092350","icon":""})
-                .withCustomCommonUrl('https://jihad-aymen-mostafa-9jxr8.chat.blip.ai/')
-                .build();
+			var blipClient = new BlipChat();
+			blipClient.withAppKey('cHJpb3JpemFkb3JkZWNoYW1hZG9zMTpjMjQyYzRjMS1iYTc3LTQ2YzYtYjc3Zi1mYTZiYzE1YjA1NDU=')
+		.withEventHandler(BlipChat.LOAD_EVENT, function () {
+      blipClient.sendMessage({
+                "type": "text/plain",
+                "content": "This is my first message"
+        });
+			})
+            .build();
         }
     })();
 </script>
-            
-<p>
-Este é um parágrafo Este é um parágrafo
-Este é um parágrafo Este é um parágrafo
-Este é um parágrafo Este é um parágrafo
-Este é um parágrafo</p>
-
-<p class="increase">
-Este é um parágrafo Este é um parágrafo
-Este é um parágrafo Este é um parágrafo
-Este é um parágrafo Este é um parágrafo
-Este é um parágrafo</p>
 
 </body>
 </html>
